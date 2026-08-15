@@ -1,11 +1,23 @@
 import { redis } from "@/lib/upstash";
 import { PortfolioData } from "@/lib/types";
-import { HeroPanel } from "@/components/bento/hero-panel";
-import { StatusPanel } from "@/components/bento/status-panel";
-import { ErrorBoundary } from "@/components/ui/error-boundary";
-import { ProjectCarousel } from "@/components/ui/project-carousel";
+import { projectsData } from "@/lib/data";
+import { FaFileAlt, FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
+import {
+  SiNextdotjs,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiGit,
+  SiMongodb,
+  SiNodedotjs,
+} from "react-icons/si";
+import { VscAzure } from "react-icons/vsc";
+import { PortfolioTabs } from "@/components/portfolio-tabs";
+import Link from "next/link";
+import Image from "next/image";
+import { FaGlobe } from "react-icons/fa";
 
-export const revalidate = 0; // Dynamic route to always fetch latest
+export const revalidate = 0;
 
 export default async function DashboardPage() {
   let data: PortfolioData | null = null;
@@ -16,7 +28,6 @@ export default async function DashboardPage() {
     console.error("Redis fetch failed:", e);
   }
 
-  // Fallback defaults if Redis is empty or missing keys
   const defaultData: PortfolioData =
     data && data.hero && data.milestones && data.projects
       ? data
@@ -24,16 +35,16 @@ export default async function DashboardPage() {
           hero: {
             title: "Samyukth Dharmarajan",
             subtitle: "ASSOCIATE SOFTWARE ENGINEER",
-            description:
-              "Expert software architect specialized in constructing ultra-high-performance web platforms using React 19, Next.js, and TypeScript. Experienced in designing secure multi-tenant architectures, edge-routed API interfaces, state synchronization layers, and zero-CLS page hydration mechanics. Associate software engineer with nearly 2 years of experience engineering accessible and high-performance enterprise web applications.",
+            description: "",
           },
           milestones: [
             {
               year: "Aug 2024 – Present",
               title: "Associate Software Engineer",
               company: "Terawe Corporation (Microsoft Vendor)",
-              desc: "Architected reusable component libraries using atomic design, resolved client-side bottlenecks on 50k-item payloads using DOM virtualization, and engineered WCAG 2.1 AA accessibility standards.",
+              desc: "Architected reusable component libraries using atomic design. Resolved client-side bottlenecks on 50k-item payloads using DOM virtualization. Engineered WCAG 2.1 AA accessibility standards.",
               iconType: "work",
+              imagePath: "/images/terawe_logo.png",
               subMilestones: [
                 {
                   year: "March 2026",
@@ -56,15 +67,16 @@ export default async function DashboardPage() {
                   desc: "Unified UI architecture across 3 internal product teams, accelerating feature delivery by 20%.",
                   type: "other",
                 },
-                {
-                  year: "Sept 2024",
-                  title:
-                    "Microsoft Certified: Azure Administrator Associate (AZ-104)",
-                  company: "Microsoft Certification",
-                  desc: "Achieved AZ-104 certification for managing cloud resources, storage, virtual networks, and CI/CD integrations.",
-                  type: "certification",
-                },
               ],
+            },
+            {
+              year: "Sept 2024",
+              title:
+                "Certification: Microsoft Certified: Azure Administrator Associate (AZ-104)",
+              company: "Microsoft Certification",
+              desc: "Achieved AZ-104 certification for managing cloud resources, storage, virtual networks, and CI/CD integrations.",
+              iconType: "certification",
+              imagePath: "/images/az-104.png",
             },
             {
               year: "June 2020 – July 2024",
@@ -72,167 +84,194 @@ export default async function DashboardPage() {
               company: "APJ Abdul Kalam Technological University",
               desc: "Graduated with honors in Computer Science from Kochi, India, securing a CGPA of 7.46/10.",
               iconType: "education",
+              imagePath: "/images/ktu_logo.jpg",
               subMilestones: [
                 {
                   year: "April 2023 – June 2023",
                   title: "Web Development Intern",
                   company: "Acmegrade",
-                  desc: "Built responsive user interfaces using React, implemented state management with Redux Toolkit, and developed backend systems using Node.js and MongoDB.",
+                  desc: "Built responsive user interfaces using React. Implemented state management with Redux Toolkit. Developed backend systems using Node.js and MongoDB.",
                   type: "internship",
                 },
               ],
             },
           ],
-          projects: [
-            {
-              id: "skillup2",
-              title: "SkillUp 2.0",
-              description:
-                "SkillUp 2.0 is an enterprise-grade Gen AI educational learning management platform configured with 5 distinct user personas (student, author, reviewer, institution admin, and skillup admin). Built to support robust certification path tracking, it integrates secure Credly badge verifications and detailed progress visualization dashboards. The platform was thoroughly and rigorously tested in staging and production deployment cycles for over 1 year to ensure high availability and zero layout shifts. Re-engineered dynamic Redux Toolkit state synchronization across browser contexts, integrated standard Ant Design layouts, and built Recharts progress metrics tracking. Scaled platform infrastructure to manage 10,000+ registered users and 1,200 concurrent user sessions with secure Google/GitHub OAuth 2.0 gates, and PostgreSQL data persistence utilizing Prisma ORM.",
-              customerDetails: "Vollee AI Internal / Consumer",
-              techStack: [
-                "Next.js 14",
-                "React 18",
-                "Redux Toolkit",
-                "Ant Design",
-                "Recharts",
-                "OpenAI GPT-4o",
-                "PostgreSQL",
-                "Prisma ORM",
-                "OAuth 2.0",
-                "Tailwind CSS",
-                "TypeScript",
-              ],
-              liveLink: "https://skillup.vollee.ai",
-              statusTag: "Live",
-              projectType: "enterprise",
-              screenshotPath: "/images/skillup_2.0_landing.png",
-              performance: {
-                users: "10k+",
-                concurrency: "1.2k",
-                uptime: "99.9%",
-              },
-            },
-            {
-              id: "skillupEdis",
-              title: "Ignite EdIs C2k",
-              description:
-                "Ignite EdIs C2k is an enterprise learning management and licensing platform engineered for the Education Authority of Northern Ireland. Built to manage mandatory compliance and teacher certification, the platform features a custom checkpoint-gated Vidstack player that prevents user skipping and tracks detailed training logs. It integrates secure SAML/OAuth 2.0 SSO and Azure AD Multi-Factor Authentication (MFA) for 24,000 active educators across the region with an Azure Redis caching layer handling up to 5,000 concurrent teachers. Automated Azure Web App backups secure critical user states. Includes document views for Ethics & Guidance/Training Resources, upcoming events feeds, recommended video lists, and checkpoint assessments.",
-              customerDetails: "Education Authority of Northern Ireland",
-              techStack: [
-                "React 19",
-                "Next.js 16",
-                "Vidstack Player",
-                "Azure Web Apps",
-                "Azure Redis",
-                "SQL Server",
-                "OAuth 2.0 / SAML SSO",
-                "Azure AD MFA",
-                "Tailwind CSS v4",
-                "TypeScript",
-              ],
-              liveLink: "https://skillup-edis.azurewebsites.net/",
-              statusTag: "Live",
-              projectType: "enterprise",
-              screenshotPath: "/images/ignite_edis_c2k_landing.png",
-              performance: {
-                users: "24k",
-                concurrency: "5k",
-                uptime: "99.95%",
-              },
-            },
-            {
-              id: "stackpilot",
-              title: "StackPilot",
-              description:
-                "StackPilot is an intelligent career transition and developer resource planning platform designed to parse uploaded resumes, track compatibility scores, and suggest relevant high-matching software job roles. Built with a NestJS backend and SQLite database persistence via Prisma, the platform connects to multiple third-party resume analysis and job listing APIs. To ensure production-grade reliability, it implements a custom backup and fallback API router mechanism that dynamically switches providers if primary services rate-limit or fail. The frontend features custom Next.js 16 and React 19 router layers, state synchronization via Zustand/TanStack Query, Radix UI primitives, and secure OAuth 2.0 authentication flows.",
-              customerDetails: "Open Source / Developer Tooling",
-              techStack: [
-                "NestJS",
-                "React 19",
-                "Next.js 16",
-                "Zustand",
-                "TanStack Query",
-                "Radix UI",
-                "SQLite",
-                "Prisma ORM",
-                "OAuth 2.0",
-                "Tailwind CSS",
-                "TypeScript",
-              ],
-              liveLink: "https://stackpilot-jext.onrender.com/",
-              statusTag: "Development",
-              projectType: "personal",
-              screenshotPath: "/images/stackpilot_landing.png",
-              performance: {
-                users: "500+",
-                concurrency: "50+",
-                uptime: "99.9%",
-              },
-            },
-          ],
+          projects: [],
         };
 
-  // Filter projects by type
-  const enterpriseProjects = defaultData.projects.filter(
-    (p) =>
-      p.projectType === "enterprise" ||
-      p.id === "skillup2" ||
-      p.id === "skillupEdis",
-  );
-
-  const personalProjects = defaultData.projects.filter(
-    (p) => p.projectType === "personal" || p.id === "stackpilot",
-  );
-
   return (
-    <main className="flex-1 p-4 md:p-8 max-w-7xl mx-auto w-full space-y-8">
-      {/* Profile Row: Profile + Journey timeline in the same row */}
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-        <ErrorBoundary fallbackTitle="PROFILE.INIT">
-          <HeroPanel
-            title={defaultData.hero.title}
-            subtitle={defaultData.hero.subtitle}
-            description={defaultData.hero.description}
-          />
-        </ErrorBoundary>
+    <main className="flex-1 p-6 md:p-12 max-w-5xl mx-auto w-full space-y-16">
+      {/* Intro Section */}
+      <section className="space-y-6 pt-4">
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white">
+          Hi! I&apos;m Samyukth Dharmarajan.
+        </h1>
+        <p className="text-lg md:text-xl text-slate-300 max-w-2xl leading-relaxed">
+          24 year old associate software engineer passionate about Frontend
+          engineering from India.
+        </p>
 
-        <ErrorBoundary fallbackTitle="JOURNEY.LOG">
-          <StatusPanel milestones={defaultData.milestones} />
-        </ErrorBoundary>
-      </div>
+        {/* Links */}
+        <div className="flex items-center space-x-6 pt-2">
+          <a
+            href="#"
+            target="_blank"
+            className="p-3 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm"
+          >
+            <FaFileAlt className="w-5 h-5" />
+          </a>
+          <a
+            href="https://linkedin.com/in/samyukth-dharmarajan"
+            target="_blank"
+            className="p-3 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm"
+          >
+            <FaLinkedin className="w-5 h-5" />
+          </a>
+          <a
+            href="https://github.com/samyukthdraj"
+            target="_blank"
+            className="p-3 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm"
+          >
+            <FaGithub className="w-5 h-5" />
+          </a>
+          <a
+            href="mailto:drajsamyukth@gmail.com"
+            target="_blank"
+            className="p-3 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm"
+          >
+            <FaEnvelope className="w-5 h-5" />
+          </a>
+        </div>
+      </section>
 
-      {/* Enterprise Grade Projects Section */}
-      <div className="space-y-6">
-        <div className="border-t border-slate-900 pt-8 mt-4">
-          <span className="text-[10px] text-emerald-400 font-mono tracking-widest uppercase">
-            {"// ENTERPRISE_GRADE_PROJECTS"}
-          </span>
-          <h2 className="text-2xl font-bold tracking-tight text-slate-100 mt-1">
-            ENTERPRISE GRADE PROJECTS
+      {/* Current Technologies */}
+      <section className="space-y-6">
+        <div>
+          <h2 className="text-2xl font-bold text-white tracking-tight">
+            Current Technologies
           </h2>
+          <p className="text-slate-400 mt-1 text-sm md:text-base">
+            I&apos;m proficient in a range of modern technologies that excites
+            me.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          <div className="flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+            <SiNextdotjs className="w-5 h-5 text-white" />
+            <span className="font-medium text-slate-200">Next.js</span>
+          </div>
+          <div className="flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+            <SiReact className="w-5 h-5 text-sky-400" />
+            <span className="font-medium text-slate-200">React</span>
+          </div>
+          <div className="flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+            <SiTailwindcss className="w-5 h-5 text-sky-300" />
+            <span className="font-medium text-slate-200">Tailwind</span>
+          </div>
+          <div className="flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+            <SiTypescript className="w-5 h-5 text-blue-500" />
+            <span className="font-medium text-slate-200">Typescript</span>
+          </div>
+          <div className="flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+            <SiGit className="w-5 h-5 text-orange-500" />
+            <span className="font-medium text-slate-200">Git</span>
+          </div>
+          <div className="flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+            <SiMongodb className="w-5 h-5 text-green-500" />
+            <span className="font-medium text-slate-200">MongoDB</span>
+          </div>
+          <div className="flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+            <VscAzure className="w-5 h-5 text-blue-400" />
+            <span className="font-medium text-slate-200">Azure</span>
+          </div>
+          <div className="flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+            <SiNodedotjs className="w-5 h-5 text-green-600" />
+            <span className="font-medium text-slate-200">Node.js</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Tabs Section */}
+      <section>
+        <PortfolioTabs data={defaultData} />
+      </section>
+
+      {/* Highlight Projects Section */}
+      <section className="space-y-8 pt-8">
+        <div>
+          <h2 className="text-2xl font-bold text-white tracking-tight">
+            Featured Projects
+          </h2>
+          <p className="text-slate-400 mt-1 text-sm md:text-base">
+            Some of my recent highlighted work.
+          </p>
         </div>
 
-        <ErrorBoundary fallbackTitle="ENTERPRISE_CAROUSEL">
-          <ProjectCarousel projects={enterpriseProjects} />
-        </ErrorBoundary>
-      </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projectsData.slice(0, 2).map((project) => (
+            <div
+              key={project.id}
+              className="flex flex-col bg-[#0b0f19] border border-slate-800 rounded-2xl overflow-hidden shadow-sm transition-all hover:border-slate-700"
+            >
+              <div className="w-full aspect-4/3 bg-slate-900 relative p-6 flex items-center justify-center">
+                {project.screenshotPath ? (
+                  <Image
+                    src={project.screenshotPath}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="text-slate-600 font-bold text-2xl">
+                    {project.title}
+                  </div>
+                )}
+              </div>
 
-      {/* Personal Projects Section */}
-      <div className="space-y-6">
-        <div className="border-t border-slate-900 pt-8 mt-4">
-          <span className="text-[10px] text-emerald-400 font-mono tracking-widest uppercase">
-            {"// PERSONAL_PROJECTS"}
-          </span>
-          <h2 className="text-2xl font-bold tracking-tight text-slate-100 mt-1">
-            PERSONAL PROJECTS
-          </h2>
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-xl font-bold text-slate-100 mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-3">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap items-center gap-3 mt-auto">
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center space-x-2 px-4 py-2 bg-white text-slate-950 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors"
+                  >
+                    <FaGlobe className="w-4 h-4" />
+                    <span>Website</span>
+                  </a>
+                  {project.sourceLink && (
+                    <a
+                      href={project.sourceLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center space-x-2 px-4 py-2 bg-white text-slate-950 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors"
+                    >
+                      <FaGithub className="w-4 h-4" />
+                      <span>Source</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <ErrorBoundary fallbackTitle="PERSONAL_CAROUSEL">
-          <ProjectCarousel projects={personalProjects} />
-        </ErrorBoundary>
-      </div>
+        <div className="flex justify-center pt-4">
+          <Link
+            href="/projects"
+            className="px-8 py-3 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-xl font-bold hover:bg-emerald-500 hover:text-slate-950 transition-colors"
+          >
+            View More Projects
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }

@@ -11,7 +11,8 @@ export interface Milestone {
   title: string;
   company: string;
   desc: string;
-  iconType: "work" | "education" | "award" | "other";
+  iconType: "work" | "education" | "award" | "other" | "certification";
+  imagePath?: string;
   subMilestones?: SubMilestone[];
 }
 
@@ -30,6 +31,7 @@ export interface ProjectMetrics {
     concurrency?: string;
     uptime?: string;
   };
+  sourceLink?: string;
 }
 
 export interface PortfolioData {

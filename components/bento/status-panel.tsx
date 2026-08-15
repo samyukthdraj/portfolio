@@ -1,116 +1,111 @@
 import { Milestone } from "@/lib/types";
-import { TerminalWrapper } from "../ui/terminal-wrapper";
-import { Briefcase, GraduationCap, Award, Star } from "lucide-react";
+import { Briefcase, GraduationCap, Award } from "lucide-react";
+import Image from "next/image";
 
 interface StatusPanelProps {
   milestones?: Milestone[];
 }
 
 export function StatusPanel({ milestones = [] }: StatusPanelProps) {
-  const getIcon = (type: string) => {
-    switch (type) {
-      case "work":
-        return Briefcase;
-      case "education":
-        return GraduationCap;
-      case "award":
-        return Award;
-      default:
-        return Star;
-    }
-  };
-
-  const defaultMilestones: Milestone[] = milestones.length > 0 ? milestones : [
-    {
-      year: "2024 - Present",
-      title: "Senior Frontend Architect",
-      company: "Vollee AI",
-      desc: "Architected gated assessment players, migrated systems to Next.js 14/15, and scaled enterprise education platforms.",
-      iconType: "work"
-    },
-    {
-      year: "2023",
-      title: "Ignite EdIs C2K Project Lead",
-      company: "EA of Ireland / Vollee",
-      desc: "Engineered SSO, MFA, Azure backups, scaling to 24k educators and 5k concurrency with Northern Ireland portal integration.",
-      iconType: "work"
-    },
-    {
-      year: "2022",
-      title: "Full-Stack Engineer",
-      company: "Freelance / Tech Startup",
-      desc: "Designed Zustand and TanStack Query state patterns, integrated web APIs, and managed PostgreSQL databases.",
-      iconType: "work"
-    },
-    {
-      year: "2021",
-      title: "B.S. Software Engineering",
-      company: "University of Ireland",
-      desc: "Graduated with honors. Focused on Distributed Systems and Frontend Architectures.",
-      iconType: "education"
-    }
-  ];
+  if (milestones.length === 0) return null;
 
   return (
-    <TerminalWrapper title="JOURNEY.LOG" className="col-span-full lg:col-span-2 h-full">
-      <div className="flex flex-col h-full space-y-4">
-        <div className="flex items-center space-x-2 pb-2 border-b border-slate-900">
-          <Briefcase className="w-4 h-4 text-emerald-400" />
-          <span className="text-sm font-mono text-slate-300">JOURNEY_TIMELINE</span>
-        </div>
-        
-        {/* Added pl-4 to prevent cutting off absolute badges/borders */}
-        <div className="flex-1 overflow-y-auto pl-4 pr-2 space-y-4 scrollbar-thin scrollbar-thumb-slate-800">
-          {defaultMilestones.map((item, index) => {
-            const IconComponent = getIcon(item.iconType);
-            return (
-              <div key={index} className="relative pl-6 border-l border-slate-800 pb-4 last:pb-0">
-                <div className="absolute left-[-9px] top-1 bg-slate-950 p-0.5 border border-slate-800 rounded-full flex items-center justify-center z-10">
-                  <IconComponent className="w-3.5 h-3.5 text-slate-400" />
-                </div>
-                <div className="flex flex-col">
-                  <div className="flex justify-between items-baseline gap-2">
-                    <span className="text-xs font-semibold text-slate-100">{item.title}</span>
-                    <span className="text-[10px] text-slate-500 font-mono shrink-0">{item.year}</span>
-                  </div>
-                  <span className="text-[10px] text-emerald-400 font-mono">{item.company}</span>
-                  <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">{item.desc}</p>
-                  
-                  {/* Nested Sub-branches */}
-                  {item.subMilestones && item.subMilestones.length > 0 && (
-                    <div className="mt-3 space-y-3 pl-4 relative">
-                      {item.subMilestones.map((sub, sIdx) => (
-                        <div key={sIdx} className="relative pl-0.5 pt-1">
-                          {/* Horizontal connector line directly to the main timeline line */}
-                          <div className="absolute left-[-40px] top-[11px] w-10 h-px border-t border-dashed border-slate-800" />
-                          
-                          <div className="flex flex-col">
-                            <div className="flex justify-between items-start gap-2">
-                              <span className="text-[10px] font-medium text-slate-200 flex items-start gap-1.5">
-                                {sub.type === "certification" ? (
-                                  <Award className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-[1px]" />
-                                ) : sub.type === "internship" ? (
-                                  <Briefcase className="w-3.5 h-3.5 text-sky-500 shrink-0 mt-[1px]" />
-                                ) : (
-                                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-[5px]" />
-                                )}
-                                <span>{sub.title}</span>
-                              </span>
-                              <span className="text-[9px] text-slate-500 font-mono shrink-0 mt-[2px]">{sub.year}</span>
-                            </div>
-                            <span className="text-[9px] text-emerald-400 font-mono pl-5">{sub.company}</span>
-                            <p className="text-[10px] text-slate-400 mt-0.5 leading-relaxed pl-5">{sub.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
+    <div className="space-y-0">
+      {milestones.map((item, index) => {
+        const isCert =
+          item.iconType === "certification" ||
+          item.title.toLowerCase().includes("certification");
+        const Icon = isCert
+          ? Award
+          : item.iconType === "education"
+            ? GraduationCap
+            : Briefcase;
+        const isLast = index === milestones.length - 1;
+
+        return (
+          <div key={index} className="flex gap-4 relative pb-8">
+            {/* Left Timeline Line & Icon */}
+            <div className="shrink-0 flex flex-col items-center z-10">
+              <div className="w-10 h-10 rounded-full border border-slate-700 bg-white flex items-center justify-center text-slate-300 overflow-hidden relative">
+                {item.imagePath ? (
+                  <Image
+                    src={item.imagePath}
+                    alt={item.company}
+                    fill
+                    className={`object-cover ${
+                      item.imagePath.includes("ktu_logo")
+                        ? "scale-[1.45]"
+                        : item.imagePath.includes("az-104")
+                          ? "scale-[0.99]"
+                          : "scale-110"
+                    }`}
+                  />
+                ) : (
+                  <Icon className="w-5 h-5" />
+                )}
               </div>
-            );
-          })}
-        </div>
-      </div>
-    </TerminalWrapper>
+              {/* Timeline connecting line */}
+              {!isLast && (
+                <div className="w-px h-[calc(100%-40px)] bg-slate-800 mt-2 absolute top-10 left-4.75"></div>
+              )}
+            </div>
+
+            {/* Right Content */}
+            <div className="flex-1 pb-2">
+              {/* Company / Title header */}
+              <h3 className="text-[17px] font-bold text-slate-100">
+                {item.company}
+              </h3>
+
+              {/* Main Role & Date */}
+              <div className="flex justify-between items-start mt-0.5 mb-2">
+                <span className="text-[15px] font-medium text-slate-300">
+                  {item.title}
+                </span>
+                <span className="text-[13px] font-medium text-slate-400 whitespace-nowrap pl-4">
+                  {item.year}
+                </span>
+              </div>
+
+              {/* Main Desc Bullet Points */}
+              <ul className="list-outside ml-4 list-disc text-[14px] text-slate-300 space-y-1.5 leading-relaxed marker:text-slate-500">
+                {item.desc
+                  .split(/(?<=\.)\s+/)
+                  .filter(Boolean)
+                  .map((point, i) => (
+                    <li key={i}>{point}</li>
+                  ))}
+              </ul>
+
+              {/* Sub roles */}
+              {item.subMilestones && item.subMilestones.length > 0 && (
+                <div className="mt-5 space-y-5">
+                  {item.subMilestones.map((sub, sIdx) => (
+                    <div key={sIdx}>
+                      <div className="flex justify-between items-start mb-2">
+                        <span className="text-[15px] font-medium text-slate-300">
+                          {sub.title}
+                        </span>
+                        <span className="text-[13px] font-medium text-slate-400 whitespace-nowrap pl-4">
+                          {sub.year}
+                        </span>
+                      </div>
+                      <ul className="list-outside ml-4 list-disc text-[14px] text-slate-300 space-y-1.5 leading-relaxed marker:text-slate-500">
+                        {sub.desc
+                          .split(/(?<=\.)\s+/)
+                          .filter(Boolean)
+                          .map((point, i) => (
+                            <li key={i}>{point}</li>
+                          ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 }

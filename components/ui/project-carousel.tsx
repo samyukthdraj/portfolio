@@ -1,41 +1,5 @@
-"use client";
-
-import { Carousel, ConfigProvider, theme } from "antd";
 import { ProjectMetrics } from "@/lib/types";
-import { SkillUpTwo } from "../bento/skillup-two";
-import { SkillUpEdis } from "../bento/skillup-edis";
-import { StackPilotPanel } from "../bento/stackpilot-panel";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-
-interface CustomArrowProps {
-  className?: string;
-  style?: React.CSSProperties;
-  onClick?: () => void;
-}
-
-const CustomPrevArrow = ({ style, onClick }: CustomArrowProps) => {
-  return (
-    <button
-      onClick={onClick}
-      className="absolute left-[-40px] top-[50%] translate-y-[-50%] z-20 text-slate-400 hover:text-emerald-400 transition-colors p-2 hover:bg-slate-900/50 rounded-full border border-transparent hover:border-slate-800"
-      style={{ ...style, display: "block" }}
-    >
-      <ArrowLeft className="w-5 h-5" />
-    </button>
-  );
-};
-
-const CustomNextArrow = ({ style, onClick }: CustomArrowProps) => {
-  return (
-    <button
-      onClick={onClick}
-      className="absolute right-[-40px] top-[50%] translate-y-[-50%] z-20 text-slate-400 hover:text-emerald-400 transition-colors p-2 hover:bg-slate-900/50 rounded-full border border-transparent hover:border-slate-800"
-      style={{ ...style, display: "block" }}
-    >
-      <ArrowRight className="w-5 h-5" />
-    </button>
-  );
-};
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 interface ProjectCarouselProps {
   projects: ProjectMetrics[];
@@ -44,40 +8,55 @@ interface ProjectCarouselProps {
 export function ProjectCarousel({ projects }: ProjectCarouselProps) {
   if (projects.length === 0) return null;
 
-  const showArrows = projects.length > 1;
-
   return (
-    <ConfigProvider
-      theme={{
-        algorithm: theme.darkAlgorithm,
-        token: {
-          colorPrimary: "#10b981", // Emerald-500
-        },
-      }}
-    >
-      <div className="relative px-2 md:px-10">
-        <Carousel
-          autoplay={projects.length > 1}
-          autoplaySpeed={5000}
-          dots={projects.length > 1}
-          arrows={showArrows}
-          prevArrow={showArrows ? <CustomPrevArrow /> : undefined}
-          nextArrow={showArrows ? <CustomNextArrow /> : undefined}
-          className="w-full"
-        >
-          {projects.map((project) => (
-            <div key={project.id} className="outline-none py-2 px-1">
-              {project.id === "skillup2" ? (
-                <SkillUpTwo data={project} />
-              ) : project.id === "skillupEdis" ? (
-                <SkillUpEdis data={project} />
-              ) : (
-                <StackPilotPanel data={project} />
-              )}
+    <div className="space-y-12">
+      {projects.map((project) => (
+        <div key={project.id} className="flex flex-col md:flex-row gap-8 items-start border-b border-slate-800/50 pb-8 last:border-0 last:pb-0">
+          <div className="w-full md:w-1/3 shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src={project.screenshotPath} 
+              alt={project.title} 
+              className="w-full rounded-xl object-cover border border-slate-800 shadow-md"
+            />
+          </div>
+          <div className="w-full md:w-2/3 flex flex-col space-y-4">
+            <div>
+              <div className="flex items-center space-x-3">
+                <h3 className="text-2xl font-bold text-slate-100">{project.title}</h3>
+                <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold border border-emerald-500/20">
+                  {project.statusTag}
+                </span>
+              </div>
+              <p className="text-emerald-400 font-medium text-sm mt-1">{project.customerDetails}</p>
             </div>
-          ))}
-        </Carousel>
-      </div>
-    </ConfigProvider>
+            
+            <p className="text-slate-300 leading-relaxed text-sm md:text-base">
+              {project.description}
+            </p>
+
+            <div className="flex flex-wrap gap-2 pt-2">
+              {project.techStack.map((tech) => (
+                <span key={tech} className="px-3 py-1 bg-slate-900 text-slate-300 rounded-lg text-xs font-medium border border-slate-800">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <div className="pt-2">
+              <a 
+                href={project.liveLink} 
+                target="_blank" 
+                rel="noreferrer"
+                className="inline-flex items-center space-x-2 text-emerald-400 hover:text-emerald-300 font-medium text-sm transition-colors"
+              >
+                <span>View Live Project</span>
+                <FaExternalLinkAlt className="w-3 h-3" />
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
