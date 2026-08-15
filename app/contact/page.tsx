@@ -4,20 +4,53 @@ import { useState } from "react";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 
+import { message } from "antd";
+import { submitContactForm } from "../actions";
+
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [messageText, setMessageText] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [messageApi, contextHolder] = message.useMessage();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent("portfolio visit message:");
-    const body = encodeURIComponent(`From: ${name} (${email})\n\n${message}`);
-    window.location.href = `mailto:drajsamyukth@gmail.com?subject=${subject}&body=${body}`;
+    setIsSubmitting(true);
+    try {
+      // Send the email securely using Next.js Server Action
+      const result = await submitContactForm({
+        name,
+        email,
+        message: messageText,
+      });
+
+      if (result.success) {
+        messageApi.success({
+          content:
+            "Thanks for the message, I will get back to you as soon as I can!",
+          duration: 5,
+          className: "font-medium",
+        });
+        setName("");
+        setEmail("");
+        setMessageText("");
+      } else {
+        messageApi.error(
+          "Something went wrong while sending your message. Please try again.",
+        );
+      }
+    } catch (error) {
+      console.error("Contact form submission error:", error);
+      messageApi.error("Network error! Please try again.");
+    }
+
+    setIsSubmitting(false);
   };
 
   return (
     <main className="flex-1 p-6 md:p-12 max-w-4xl mx-auto w-full space-y-12">
+      {contextHolder}
       <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mt-4">
         Contact Me.
       </h1>
@@ -44,8 +77,8 @@ export default function ContactPage() {
 
         <textarea
           placeholder="Drop a note with any website feedback or career opportunities, or just say hi. Where are you from? :)"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          value={messageText}
+          onChange={(e) => setMessageText(e.target.value)}
           required
           rows={5}
           className="w-full bg-[#0b0f19] border border-slate-800 rounded-lg px-4 py-4 text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-emerald-500 transition-colors resize-none"
@@ -53,10 +86,13 @@ export default function ContactPage() {
 
         <button
           type="submit"
-          className="send-msg-btn w-full flex items-center justify-center space-x-2 px-8 py-3.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-xl font-bold hover:bg-emerald-500 hover:text-slate-950 transition-colors"
+          disabled={isSubmitting}
+          className="send-msg-btn w-full flex items-center justify-center space-x-2 px-8 py-3.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-xl font-bold hover:bg-emerald-500 hover:text-slate-950 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <span>Send Message</span>
-          <FiSend className="w-5 h-5" />
+          <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
+          <FiSend
+            className={`w-5 h-5 ${isSubmitting ? "animate-pulse" : ""}`}
+          />
         </button>
       </form>
 

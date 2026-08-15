@@ -20,7 +20,7 @@ import { VscAzure } from "react-icons/vsc";
 import { PortfolioTabs } from "@/components/portfolio-tabs";
 import Link from "next/link";
 import Image from "next/image";
-import { FaGlobe } from "react-icons/fa";
+import { FaGlobe, FaWpforms } from "react-icons/fa";
 
 export const revalidate = 0;
 
@@ -119,7 +119,7 @@ export default async function DashboardPage() {
         {/* Links */}
         <div className="flex flex-wrap items-center gap-4 pt-2">
           <a
-            href="#"
+            href="/resume/Samyukth_Dharmarajan_FrontEnd.pdf"
             target="_blank"
             className="hero-social-btn flex items-center space-x-2 px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm font-medium"
             aria-label="View Resume"
@@ -220,6 +220,10 @@ export default async function DashboardPage() {
           <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
             <SiRender className="w-5 h-5 text-slate-300" />
             <span className="font-medium text-slate-200">Render</span>
+          </div>
+          <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+            <FaWpforms className="w-5 h-5 text-indigo-400" />
+            <span className="font-medium text-slate-200">Web3Forms</span>
           </div>
         </div>
       </section>
