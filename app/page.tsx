@@ -47,7 +47,7 @@ export default async function DashboardPage() {
               year: "Aug 2024 – Present",
               title: "Associate Software Engineer",
               company: "Terawe Corporation (Microsoft Vendor)",
-              desc: "Architected reusable component libraries using atomic design. Resolved client-side bottlenecks on 50k-item payloads using DOM virtualization. Engineered WCAG 2.1 AA accessibility standards.",
+              desc: "Architected reusable React.js/TypeScript component library using atomic design. Resolved client-side bottlenecks on 50,000-item payloads. Engineered WCAG 2.1 AA accessibility standards.",
               iconType: "work",
               imagePath: "/images/terawe_logo.png",
               subMilestones: [
@@ -59,10 +59,17 @@ export default async function DashboardPage() {
                   type: "other",
                 },
                 {
+                  year: "Jan 2026",
+                  title: "CI/CD & Testing Automated Dual-Layer Pipeline",
+                  company: "Terawe Corp",
+                  desc: "Combined Jest unit testing (85% coverage) with Playwright E2E automation, cutting production regressions by 30%.",
+                  type: "other",
+                },
+                {
                   year: "April 2025",
                   title: "50k JSON DOM Virtualization",
                   company: "Terawe Corp",
-                  desc: "Optimized dataset rendering using windowing and useMemo, restoring frame rates from 12 FPS to 60 FPS.",
+                  desc: "Optimized dataset rendering using windowing and useMemo, restoring frame rates from 12 FPS to a stable 60 FPS.",
                   type: "other",
                 },
                 {

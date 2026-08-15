@@ -4,7 +4,7 @@ export const projectsData: ProjectMetrics[] = [
   {
     id: "stackpilot",
     title: "StackPilot",
-    description: "StackPilot is an intelligent career transition and developer resource planning platform designed to parse uploaded resumes, track compatibility scores, and suggest relevant high-matching software job roles.",
+    description: "StackPilot is an intelligent career transition and developer resource planning platform designed to parse uploaded resumes, track compatibility scores, and suggest relevant high-matching software job roles. Integrated generative AI for real-time PDF parsing, client-side skill profiling, and optimistic UI streaming. Automated Vercel deployments via GitHub Actions.",
     customerDetails: "Open Source / Developer Tooling",
     techStack: ["NestJS", "React 19", "Next.js 16", "Zustand", "TanStack Query", "Radix UI", "SQLite", "Prisma ORM", "OAuth 2.0", "Tailwind CSS", "TypeScript"],
     liveLink: "https://stackpilot-jext.onrender.com/",
@@ -68,7 +68,7 @@ export const projectsData: ProjectMetrics[] = [
   {
     id: "skillupEdis",
     title: "Ignite EdIs C2k",
-    description: "Ignite EdIs C2k is an enterprise learning management and licensing platform engineered for the Education Authority of Northern Ireland. Built to manage mandatory compliance and teacher certification, the platform features a custom checkpoint-gated Vidstack player.",
+    description: "Ignite EdIs C2k is an enterprise learning management and licensing platform engineered for the Education Authority of Northern Ireland. Built to manage mandatory compliance and teacher certification, the platform features a custom checkpoint-gated Vidstack player. Orchestrated high-availability HLS media streaming via Azure Front Door CDN, absorbing 24,000+ concurrent users with zero buffering.",
     customerDetails: "Education Authority of Northern Ireland",
     techStack: ["React 19", "Next.js 16", "Vidstack Player", "Azure Web Apps", "Azure Redis", "SQL Server", "OAuth 2.0 / SAML SSO", "Azure AD MFA", "Tailwind CSS v4", "TypeScript"],
     liveLink: "https://skillup-edis.azurewebsites.net/",
@@ -76,5 +76,17 @@ export const projectsData: ProjectMetrics[] = [
     projectType: "enterprise",
     screenshotPath: "/images/ignite_edis_c2k_landing.png",
     performance: { users: "24k", concurrency: "5k", uptime: "99.95%" },
+  },
+  {
+    id: "unified-dashboard",
+    title: "Unified Dashboard",
+    description: "Developed a real-time, responsive enterprise dashboard using Azure DevOps APIs to ingest live metrics for 500+ internal users. Designed global state architecture for 50,000+ item payloads using Redux Toolkit with container-level memoization, eliminating unnecessary re-renders.",
+    customerDetails: "Enterprise Tool",
+    techStack: ["Next.js", "TypeScript", "Redux Toolkit", "Azure DevOps APIs"],
+    liveLink: "",
+    statusTag: "Live",
+    projectType: "enterprise",
+    screenshotPath: "/images/unified_dashboard_landing.png",
+    performance: { users: "500+", concurrency: "N/A", uptime: "99.9%" },
   }
 ];
