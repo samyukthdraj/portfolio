@@ -49,7 +49,7 @@ export const projectsData: ProjectMetrics[] = [
     liveLink: "https://expense-tracker-odh7.onrender.com/expenses",
     statusTag: "Live",
     projectType: "personal",
-    screenshotPath: "",
+    screenshotPath: "/images/expense_tracker_landing_cropped.png",
     performance: {},
     sourceLink: "https://github.com/samyukthdraj/Expense-Tracker",
   },
