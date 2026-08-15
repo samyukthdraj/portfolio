@@ -2,17 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { FiSun, FiMoon } from "react-icons/fi";
+import { useState, useEffect } from "react";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 export function Navbar() {
   const pathname = usePathname();
-  const [isLight, setIsLight] = useState(() => {
-    if (typeof document !== "undefined") {
-      return document.documentElement.classList.contains("light");
+  const [isLight, setIsLight] = useState(false);
+
+  useEffect(() => {
+    if (document.documentElement.classList.contains("light")) {
+      requestAnimationFrame(() => setIsLight(true));
     }
-    return false;
-  });
+  }, []);
 
   const toggleTheme = () => {
     if (isLight) {
@@ -56,7 +57,7 @@ export function Navbar() {
           title={isLight ? "Toggle dark mode" : "Toggle light mode"}
           aria-label={isLight ? "Switch to dark theme" : "Switch to light theme"}
         >
-          {isLight ? <FiMoon className="w-5 h-5 text-slate-900" /> : <FiSun className="w-5 h-5" />}
+          {isLight ? <FaMoon className="w-4.5 h-4.5 text-slate-900 -translate-y-px" /> : <FaSun className="w-5 h-5" />}
         </button>
       </div>
     </nav>
