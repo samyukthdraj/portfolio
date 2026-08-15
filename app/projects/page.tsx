@@ -43,7 +43,7 @@ const ProjectGrid = ({ projects }: { projects: typeof projectsData }) => (
                   href={project.liveLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center space-x-2 px-4 py-2 bg-white text-slate-950 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors"
+                  className="project-action-btn border border-transparent inline-flex items-center space-x-2 px-4 py-2 bg-white text-slate-950 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors"
                 >
                   <FaGlobe className="w-4 h-4" />
                   <span>Website</span>
@@ -54,7 +54,7 @@ const ProjectGrid = ({ projects }: { projects: typeof projectsData }) => (
                   href={project.sourceLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center space-x-2 px-4 py-2 bg-white text-slate-950 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors"
+                  className="project-action-btn border border-transparent inline-flex items-center space-x-2 px-4 py-2 bg-white text-slate-950 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors"
                 >
                   <FaGithub className="w-4 h-4" />
                   <span>Source</span>
@@ -82,7 +82,7 @@ export default function ProjectsPage() {
         <div className="space-y-16">
           <div>
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-              <span className="w-2 h-8 bg-emerald-500 rounded-full"></span>
+              <span className="w-2 h-8 bg-emerald-500 in-[.light]:bg-black! rounded-full"></span>
               Personal Projects
             </h2>
             <ProjectGrid projects={personalProjects} />
@@ -90,7 +90,7 @@ export default function ProjectsPage() {
 
           <div>
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-              <span className="w-2 h-8 bg-emerald-500 rounded-full"></span>
+              <span className="w-2 h-8 bg-emerald-500 in-[.light]:bg-black! rounded-full"></span>
               Work Related Projects
             </h2>
             <ProjectGrid projects={workProjects} />

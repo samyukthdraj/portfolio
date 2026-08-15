@@ -53,10 +53,10 @@ export default function ContactPage() {
 
         <button
           type="submit"
-          className="w-full bg-white text-slate-950 font-bold text-[15px] py-3.5 rounded-lg hover:bg-slate-200 transition-colors flex items-center justify-center space-x-2"
+          className="send-msg-btn w-full flex items-center justify-center space-x-2 px-8 py-3.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-xl font-bold hover:bg-emerald-500 hover:text-slate-950 transition-colors"
         >
           <span>Send Message</span>
-          <FiSend className="w-4 h-4" />
+          <FiSend className="w-5 h-5" />
         </button>
       </form>
 
@@ -69,21 +69,21 @@ export default function ContactPage() {
         <div className="flex items-center space-x-4">
           <a
             href="https://linkedin.com/in/samyukth-dharmarajan"
-            className="hover:text-slate-300 transition-colors"
+            className="footer-social-link hover:text-slate-300 transition-colors"
           >
-            <FaLinkedin className="w-4 h-4" />
+            <FaLinkedin className="w-5 h-5" />
           </a>
           <a
             href="https://github.com/samyukthdraj"
-            className="hover:text-slate-300 transition-colors"
+            className="footer-social-link hover:text-slate-300 transition-colors"
           >
-            <FaGithub className="w-4 h-4" />
+            <FaGithub className="w-5 h-5" />
           </a>
           <a
             href="mailto:drajsamyukth@gmail.com"
-            className="hover:text-slate-300 transition-colors"
+            className="footer-social-link hover:text-slate-300 transition-colors"
           >
-            <FaEnvelope className="w-4 h-4" />
+            <FaEnvelope className="w-5 h-5" />
           </a>
         </div>
       </div>

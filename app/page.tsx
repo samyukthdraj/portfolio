@@ -10,6 +10,11 @@ import {
   SiGit,
   SiMongodb,
   SiNodedotjs,
+  SiPython,
+  SiJest,
+  SiDocker,
+  SiVercel,
+  SiRender,
 } from "react-icons/si";
 import { VscAzure } from "react-icons/vsc";
 import { PortfolioTabs } from "@/components/portfolio-tabs";
@@ -112,34 +117,42 @@ export default async function DashboardPage() {
         </p>
 
         {/* Links */}
-        <div className="flex items-center space-x-6 pt-2">
+        <div className="flex flex-wrap items-center gap-4 pt-2">
           <a
             href="#"
             target="_blank"
-            className="p-3 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm"
+            className="hero-social-btn flex items-center space-x-2 px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm font-medium"
+            aria-label="View Resume"
           >
-            <FaFileAlt className="w-5 h-5" />
+            <FaFileAlt className="w-4 h-4" />
+            <span>Resume</span>
           </a>
           <a
             href="https://linkedin.com/in/samyukth-dharmarajan"
             target="_blank"
-            className="p-3 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm"
+            className="hero-social-btn flex items-center space-x-2 px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm font-medium"
+            aria-label="LinkedIn Profile"
           >
-            <FaLinkedin className="w-5 h-5" />
+            <FaLinkedin className="w-4 h-4" />
+            <span>LinkedIn</span>
           </a>
           <a
             href="https://github.com/samyukthdraj"
             target="_blank"
-            className="p-3 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm"
+            className="hero-social-btn flex items-center space-x-2 px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm font-medium"
+            aria-label="Github Profile"
           >
-            <FaGithub className="w-5 h-5" />
+            <FaGithub className="w-4 h-4" />
+            <span>Github</span>
           </a>
           <a
             href="mailto:drajsamyukth@gmail.com"
             target="_blank"
-            className="p-3 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm"
+            className="hero-social-btn flex items-center space-x-2 px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm font-medium"
+            aria-label="Email Me"
           >
-            <FaEnvelope className="w-5 h-5" />
+            <FaEnvelope className="w-4 h-4" />
+            <span>Email</span>
           </a>
         </div>
       </section>
@@ -156,37 +169,57 @@ export default async function DashboardPage() {
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <div className="flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+          <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
             <SiNextdotjs className="w-5 h-5 text-white" />
             <span className="font-medium text-slate-200">Next.js</span>
           </div>
-          <div className="flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+          <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
             <SiReact className="w-5 h-5 text-sky-400" />
             <span className="font-medium text-slate-200">React</span>
           </div>
-          <div className="flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+          <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
             <SiTailwindcss className="w-5 h-5 text-sky-300" />
             <span className="font-medium text-slate-200">Tailwind</span>
           </div>
-          <div className="flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+          <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
             <SiTypescript className="w-5 h-5 text-blue-500" />
             <span className="font-medium text-slate-200">Typescript</span>
           </div>
-          <div className="flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+          <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
             <SiGit className="w-5 h-5 text-orange-500" />
             <span className="font-medium text-slate-200">Git</span>
           </div>
-          <div className="flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+          <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
             <SiMongodb className="w-5 h-5 text-green-500" />
             <span className="font-medium text-slate-200">MongoDB</span>
           </div>
-          <div className="flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+          <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
             <VscAzure className="w-5 h-5 text-blue-400" />
             <span className="font-medium text-slate-200">Azure</span>
           </div>
-          <div className="flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+          <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
             <SiNodedotjs className="w-5 h-5 text-green-600" />
             <span className="font-medium text-slate-200">Node.js</span>
+          </div>
+          <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+            <SiPython className="w-5 h-5 text-yellow-500" />
+            <span className="font-medium text-slate-200">Python</span>
+          </div>
+          <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+            <SiJest className="w-5 h-5 text-red-500" />
+            <span className="font-medium text-slate-200">Jest</span>
+          </div>
+          <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+            <SiDocker className="w-5 h-5 text-blue-500" />
+            <span className="font-medium text-slate-200">Docker</span>
+          </div>
+          <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+            <SiVercel className="w-5 h-5 text-white" />
+            <span className="font-medium text-slate-200">Vercel</span>
+          </div>
+          <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+            <SiRender className="w-5 h-5 text-slate-300" />
+            <span className="font-medium text-slate-200">Render</span>
           </div>
         </div>
       </section>
@@ -241,7 +274,7 @@ export default async function DashboardPage() {
                     href={project.liveLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center space-x-2 px-4 py-2 bg-white text-slate-950 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors"
+                    className="project-action-btn border border-transparent inline-flex items-center space-x-2 px-4 py-2 bg-white text-slate-950 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors"
                   >
                     <FaGlobe className="w-4 h-4" />
                     <span>Website</span>
@@ -251,7 +284,7 @@ export default async function DashboardPage() {
                       href={project.sourceLink}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center space-x-2 px-4 py-2 bg-white text-slate-950 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors"
+                      className="project-action-btn border border-transparent inline-flex items-center space-x-2 px-4 py-2 bg-white text-slate-950 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors"
                     >
                       <FaGithub className="w-4 h-4" />
                       <span>Source</span>
@@ -266,7 +299,7 @@ export default async function DashboardPage() {
         <div className="flex justify-center pt-4">
           <Link
             href="/projects"
-            className="px-8 py-3 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-xl font-bold hover:bg-emerald-500 hover:text-slate-950 transition-colors"
+            className="view-more-btn flex items-center justify-center space-x-2 px-8 py-3 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm font-bold text-lg"
           >
             View More Projects
           </Link>

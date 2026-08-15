@@ -26,7 +26,7 @@ export function StatusPanel({ milestones = [] }: StatusPanelProps) {
           <div key={index} className="flex gap-4 relative pb-8">
             {/* Left Timeline Line & Icon */}
             <div className="shrink-0 flex flex-col items-center z-10">
-              <div className="w-10 h-10 rounded-full border border-slate-700 bg-white flex items-center justify-center text-slate-300 overflow-hidden relative">
+              <div className="w-14 h-14 rounded-full border border-slate-700 bg-white flex items-center justify-center text-slate-300 overflow-hidden relative">
                 {item.imagePath ? (
                   <Image
                     src={item.imagePath}
@@ -41,12 +41,14 @@ export function StatusPanel({ milestones = [] }: StatusPanelProps) {
                     }`}
                   />
                 ) : (
-                  <Icon className="w-5 h-5" />
+                  <div className="w-6 h-6 flex items-center justify-center">
+                    <Icon className="w-6 h-6" />
+                  </div>
                 )}
               </div>
               {/* Timeline connecting line */}
               {!isLast && (
-                <div className="w-px h-[calc(100%-40px)] bg-slate-800 mt-2 absolute top-10 left-4.75"></div>
+                <div className="w-px h-[calc(100%-66px)] bg-slate-800 mt-2 absolute top-14 left-7"></div>
               )}
             </div>
 

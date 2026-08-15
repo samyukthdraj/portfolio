@@ -11,6 +11,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Samyukth Dharmarajan",
   description: "Samyukth Dharmarajan's Portfolio",
+  icons: {
+    icon: "/images/favicon_logo_rounded.png",
+  },
 };
 
 import { Navbar } from "@/components/ui/navbar";

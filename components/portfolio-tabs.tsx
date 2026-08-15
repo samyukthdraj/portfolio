@@ -24,8 +24,8 @@ export function PortfolioTabs({ data }: PortfolioTabsProps) {
             onClick={() => setActiveTab(tab)}
             className={`px-6 py-2 rounded-lg font-medium transition-all ${
               activeTab === tab
-                ? "bg-slate-800/50 text-slate-100"
-                : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/30"
+                ? "portfolio-tab-active bg-slate-800/50 text-slate-100"
+                : "portfolio-tab-inactive text-slate-400 hover:text-slate-200 hover:bg-slate-800/30"
             }`}
           >
             {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -34,7 +34,7 @@ export function PortfolioTabs({ data }: PortfolioTabsProps) {
       </div>
 
       {/* Tab Content */}
-      <div className="min-h-125">
+      <div>
         {activeTab === "work" && (
           <div className="animate-in fade-in slide-in-from-bottom-2 duration-500">
             <StatusPanel milestones={workMilestones} />
