@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+body {
+  background-color: #030712;
+  color: #f1f5f9;
+  font-family: var(--font-geist-mono), monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Equal height slick slides for difficulties carousel */
+.difficulties-carousel .slick-track {
+  display: flex !important;
+}
+.difficulties-carousel .slick-slide {
+  height: auto !important;
+  display: flex !important;
+}
+.difficulties-carousel .slick-slide > div {
+  height: 100% !important;
+  display: flex !important;
+  width: 100%;
+}
