@@ -53,18 +53,18 @@ export function StatusPanel({ milestones = [] }: StatusPanelProps) {
             </div>
 
             {/* Right Content */}
-            <div className="flex-1 pb-2">
+            <div className="flex-1 pb-2 min-w-0">
               {/* Company / Title header */}
-              <h3 className="text-[17px] font-bold text-slate-100">
+              <h3 className="text-[17px] font-bold text-slate-100 break-words">
                 {item.company}
               </h3>
 
               {/* Main Role & Date */}
-              <div className="flex justify-between items-start mt-0.5 mb-2">
-                <span className="text-[15px] font-medium text-slate-300">
+              <div className="flex flex-col sm:flex-row justify-between items-start mt-0.5 mb-2 gap-1 sm:gap-4">
+                <span className="text-[15px] font-medium text-slate-300 break-words">
                   {item.title}
                 </span>
-                <span className="text-[13px] font-medium text-slate-400 whitespace-nowrap pl-4">
+                <span className="text-[13px] font-medium text-slate-400 whitespace-nowrap sm:pl-4">
                   {item.year}
                 </span>
               </div>
@@ -84,11 +84,11 @@ export function StatusPanel({ milestones = [] }: StatusPanelProps) {
                 <div className="mt-5 space-y-5">
                   {item.subMilestones.map((sub, sIdx) => (
                     <div key={sIdx}>
-                      <div className="flex justify-between items-start mb-2">
-                        <span className="text-[15px] font-medium text-slate-300">
+                      <div className="flex flex-col sm:flex-row justify-between items-start mb-2 gap-1 sm:gap-4">
+                        <span className="text-[15px] font-medium text-slate-300 break-words">
                           {sub.title}
                         </span>
-                        <span className="text-[13px] font-medium text-slate-400 whitespace-nowrap pl-4">
+                        <span className="text-[13px] font-medium text-slate-400 whitespace-nowrap sm:pl-4">
                           {sub.year}
                         </span>
                       </div>

@@ -99,7 +99,7 @@ export default function ContactPage() {
       {/* Footer-like section matching image */}
       <div className="pt-24 flex items-center justify-between text-slate-500 text-sm border-t border-slate-800/50 mt-12">
         <div>
-          © {new Date().getFullYear()} samyukth.com |{" "}
+          © {new Date().getFullYear()} samyukthdharmarajan.vercel.app |{" "}
           <span className="font-bold">contact</span>
         </div>
         <div className="flex items-center space-x-4">

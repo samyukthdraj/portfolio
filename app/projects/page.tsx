@@ -1,6 +1,12 @@
 import { projectsData } from "@/lib/data";
 import { FaGlobe, FaGithub } from "react-icons/fa";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "A showcase of Samyukth Dharmarajan's recent personal experiments and enterprise projects.",
+};
 
 const ProjectGrid = ({ projects }: { projects: typeof projectsData }) => (
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
