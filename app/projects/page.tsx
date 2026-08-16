@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const ProjectGrid = ({ projects }: { projects: typeof projectsData }) => (
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {projects.map((project) => (
+    {projects.map((project, index) => (
       <div key={project.id} className="flex flex-col bg-[#0b0f19] border border-slate-800 rounded-2xl overflow-hidden shadow-sm transition-all hover:border-slate-700">
         {/* Image Section */}
         <div className="w-full aspect-4/3 bg-slate-900 relative p-6 flex items-center justify-center">
@@ -19,6 +19,7 @@ const ProjectGrid = ({ projects }: { projects: typeof projectsData }) => (
                 src={project.screenshotPath} 
                 alt={project.title}
                 fill
+                priority={index <= 1}
                 className="object-cover"
               />
             ) : (
@@ -51,7 +52,7 @@ const ProjectGrid = ({ projects }: { projects: typeof projectsData }) => (
                   rel="noreferrer"
                   className="project-action-btn border border-transparent inline-flex items-center space-x-2 px-4 py-2 bg-white text-slate-950 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors"
                 >
-                  <FaGlobe className="w-4 h-4" />
+                  <FaGlobe className="w-4 h-4" aria-hidden="true" />
                   <span>Website</span>
                 </a>
               )}
@@ -62,7 +63,7 @@ const ProjectGrid = ({ projects }: { projects: typeof projectsData }) => (
                   rel="noreferrer"
                   className="project-action-btn border border-transparent inline-flex items-center space-x-2 px-4 py-2 bg-white text-slate-950 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors"
                 >
-                  <FaGithub className="w-4 h-4" />
+                  <FaGithub className="w-4 h-4" aria-hidden="true" />
                   <span>Source</span>
                 </a>
               )}
