@@ -22,7 +22,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaGlobe, FaWpforms } from "react-icons/fa";
 
-export const revalidate = 0;
+export const revalidate = 3600;
 
 export default async function DashboardPage() {
   let data: PortfolioData | null = null;
@@ -57,7 +57,7 @@ export default async function DashboardPage() {
             className="hero-social-btn flex items-center space-x-2 px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm font-medium"
             aria-label="View Resume"
           >
-            <FaFileAlt className="w-4 h-4" />
+            <FaFileAlt className="w-4 h-4" aria-hidden="true" />
             <span>Resume</span>
           </a>
           <a
@@ -66,7 +66,7 @@ export default async function DashboardPage() {
             className="hero-social-btn flex items-center space-x-2 px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm font-medium"
             aria-label="LinkedIn Profile"
           >
-            <FaLinkedin className="w-4 h-4" />
+            <FaLinkedin className="w-4 h-4" aria-hidden="true" />
             <span>LinkedIn</span>
           </a>
           <a
@@ -75,7 +75,7 @@ export default async function DashboardPage() {
             className="hero-social-btn flex items-center space-x-2 px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm font-medium"
             aria-label="Github Profile"
           >
-            <FaGithub className="w-4 h-4" />
+            <FaGithub className="w-4 h-4" aria-hidden="true" />
             <span>Github</span>
           </a>
           <a
@@ -84,7 +84,7 @@ export default async function DashboardPage() {
             className="hero-social-btn flex items-center space-x-2 px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-full text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-sm font-medium"
             aria-label="Email Me"
           >
-            <FaEnvelope className="w-4 h-4" />
+            <FaEnvelope className="w-4 h-4" aria-hidden="true" />
             <span>Email</span>
           </a>
         </div>
@@ -103,59 +103,59 @@ export default async function DashboardPage() {
         </div>
         <div className="flex flex-wrap gap-3">
           <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
-            <SiNextdotjs className="w-5 h-5 text-white" />
+            <SiNextdotjs className="w-5 h-5 text-white" aria-hidden="true" />
             <span className="font-medium text-slate-200">Next.js</span>
           </div>
           <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
-            <SiReact className="w-5 h-5 text-sky-400" />
+            <SiReact className="w-5 h-5 text-sky-400" aria-hidden="true" />
             <span className="font-medium text-slate-200">React</span>
           </div>
           <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
-            <SiTailwindcss className="w-5 h-5 text-sky-300" />
+            <SiTailwindcss className="w-5 h-5 text-sky-300" aria-hidden="true" />
             <span className="font-medium text-slate-200">Tailwind</span>
           </div>
           <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
-            <SiTypescript className="w-5 h-5 text-blue-500" />
+            <SiTypescript className="w-5 h-5 text-blue-500" aria-hidden="true" />
             <span className="font-medium text-slate-200">Typescript</span>
           </div>
           <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
-            <SiGit className="w-5 h-5 text-orange-500" />
+            <SiGit className="w-5 h-5 text-orange-500" aria-hidden="true" />
             <span className="font-medium text-slate-200">Git</span>
           </div>
           <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
-            <SiMongodb className="w-5 h-5 text-green-500" />
+            <SiMongodb className="w-5 h-5 text-green-500" aria-hidden="true" />
             <span className="font-medium text-slate-200">MongoDB</span>
           </div>
           <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
-            <VscAzure className="w-5 h-5 text-blue-400" />
+            <VscAzure className="w-5 h-5 text-blue-400" aria-hidden="true" />
             <span className="font-medium text-slate-200">Azure</span>
           </div>
           <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
-            <SiNodedotjs className="w-5 h-5 text-green-600" />
+            <SiNodedotjs className="w-5 h-5 text-green-600" aria-hidden="true" />
             <span className="font-medium text-slate-200">Node.js</span>
           </div>
           <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
-            <SiPython className="w-5 h-5 text-yellow-500" />
+            <SiPython className="w-5 h-5 text-yellow-500" aria-hidden="true" />
             <span className="font-medium text-slate-200">Python</span>
           </div>
           <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
-            <SiJest className="w-5 h-5 text-red-500" />
+            <SiJest className="w-5 h-5 text-red-500" aria-hidden="true" />
             <span className="font-medium text-slate-200">Jest</span>
           </div>
           <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
-            <SiDocker className="w-5 h-5 text-blue-500" />
+            <SiDocker className="w-5 h-5 text-blue-500" aria-hidden="true" />
             <span className="font-medium text-slate-200">Docker</span>
           </div>
           <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
-            <SiVercel className="w-5 h-5 text-white" />
+            <SiVercel className="w-5 h-5 text-white" aria-hidden="true" />
             <span className="font-medium text-slate-200">Vercel</span>
           </div>
           <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
-            <SiRender className="w-5 h-5 text-slate-300" />
+            <SiRender className="w-5 h-5 text-slate-300" aria-hidden="true" />
             <span className="font-medium text-slate-200">Render</span>
           </div>
           <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
-            <FaWpforms className="w-5 h-5 text-indigo-400" />
+            <FaWpforms className="w-5 h-5 text-indigo-400" aria-hidden="true" />
             <span className="font-medium text-slate-200">Web3Forms</span>
           </div>
         </div>
@@ -213,7 +213,7 @@ export default async function DashboardPage() {
                     rel="noreferrer"
                     className="project-action-btn border border-transparent inline-flex items-center space-x-2 px-4 py-2 bg-white text-slate-950 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors"
                   >
-                    <FaGlobe className="w-4 h-4" />
+                    <FaGlobe className="w-4 h-4" aria-hidden="true" />
                     <span>Website</span>
                   </a>
                   {project.sourceLink && (
@@ -223,7 +223,7 @@ export default async function DashboardPage() {
                       rel="noreferrer"
                       className="project-action-btn border border-transparent inline-flex items-center space-x-2 px-4 py-2 bg-white text-slate-950 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors"
                     >
-                      <FaGithub className="w-4 h-4" />
+                      <FaGithub className="w-4 h-4" aria-hidden="true" />
                       <span>Source</span>
                     </a>
                   )}

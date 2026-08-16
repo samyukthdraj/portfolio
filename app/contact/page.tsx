@@ -60,28 +60,31 @@ export default function ContactPage() {
           <input
             type="text"
             placeholder="Name"
+            aria-label="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="w-full bg-[#0b0f19] border border-slate-800 rounded-lg px-4 py-3 text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
+            className="w-full bg-[#0b0f19] border border-slate-800 rounded-lg px-4 py-3 text-slate-200 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 transition-colors"
           />
           <input
             type="email"
             placeholder="Email"
+            aria-label="Email Address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full bg-[#0b0f19] border border-slate-800 rounded-lg px-4 py-3 text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
+            className="w-full bg-[#0b0f19] border border-slate-800 rounded-lg px-4 py-3 text-slate-200 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 transition-colors"
           />
         </div>
 
         <textarea
           placeholder="Drop a note with any website feedback or career opportunities, or just say hi. Where are you from? :)"
+          aria-label="Message"
           value={messageText}
           onChange={(e) => setMessageText(e.target.value)}
           required
           rows={5}
-          className="w-full bg-[#0b0f19] border border-slate-800 rounded-lg px-4 py-4 text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-emerald-500 transition-colors resize-none"
+          className="w-full bg-[#0b0f19] border border-slate-800 rounded-lg px-4 py-4 text-slate-200 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 transition-colors resize-none"
         ></textarea>
 
         <button
@@ -97,7 +100,7 @@ export default function ContactPage() {
       </form>
 
       {/* Footer-like section matching image */}
-      <div className="pt-24 flex items-center justify-between text-slate-500 text-sm border-t border-slate-800/50 mt-12">
+      <div className="pt-24 flex items-center justify-between text-slate-400 text-sm border-t border-slate-800/50 mt-12">
         <div>
           © {new Date().getFullYear()} samyukthdharmarajan.vercel.app |{" "}
           <span className="font-bold">contact</span>
@@ -106,18 +109,21 @@ export default function ContactPage() {
           <a
             href="https://linkedin.com/in/samyukth-dharmarajan"
             className="footer-social-link hover:text-slate-300 transition-colors"
+            aria-label="LinkedIn Profile"
           >
             <FaLinkedin className="w-5 h-5" />
           </a>
           <a
             href="https://github.com/samyukthdraj"
             className="footer-social-link hover:text-slate-300 transition-colors"
+            aria-label="GitHub Profile"
           >
             <FaGithub className="w-5 h-5" />
           </a>
           <a
             href="mailto:drajsamyukth@gmail.com"
             className="footer-social-link hover:text-slate-300 transition-colors"
+            aria-label="Send an Email"
           >
             <FaEnvelope className="w-5 h-5" />
           </a>
