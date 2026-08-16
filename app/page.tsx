@@ -1,6 +1,6 @@
 import { redis } from "@/lib/upstash";
 import { PortfolioData } from "@/lib/types";
-import { projectsData } from "@/lib/data";
+import { projectsData, defaultPortfolioData } from "@/lib/data";
 import { FaFileAlt, FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import {
   SiNextdotjs,
@@ -36,91 +36,17 @@ export default async function DashboardPage() {
   const defaultData: PortfolioData =
     data && data.hero && data.milestones && data.projects
       ? data
-      : {
-          hero: {
-            title: "Samyukth Dharmarajan",
-            subtitle: "ASSOCIATE SOFTWARE ENGINEER",
-            description: "",
-          },
-          milestones: [
-            {
-              year: "Aug 2024 – Present",
-              title: "Associate Software Engineer",
-              company: "Terawe Corporation (Microsoft Vendor)",
-              desc: "Architected reusable React.js/TypeScript component library using atomic design. Resolved client-side bottlenecks on 50,000-item payloads. Engineered WCAG 2.1 AA accessibility standards.",
-              iconType: "work",
-              imagePath: "/images/terawe_logo.png",
-              subMilestones: [
-                {
-                  year: "March 2026",
-                  title: "WCAG 2.1 AA Accessibility",
-                  company: "Terawe Corp",
-                  desc: "Engineered full screen reader and keyboard navigability, reducing user support tickets by 15%.",
-                  type: "other",
-                },
-                {
-                  year: "Jan 2026",
-                  title: "CI/CD & Testing Automated Dual-Layer Pipeline",
-                  company: "Terawe Corp",
-                  desc: "Combined Jest unit testing (85% coverage) with Playwright E2E automation, cutting production regressions by 30%.",
-                  type: "other",
-                },
-                {
-                  year: "April 2025",
-                  title: "50k JSON DOM Virtualization",
-                  company: "Terawe Corp",
-                  desc: "Optimized dataset rendering using windowing and useMemo, restoring frame rates from 12 FPS to a stable 60 FPS.",
-                  type: "other",
-                },
-                {
-                  year: "Nov 2024",
-                  title: "Atomic Design Library",
-                  company: "Terawe Corp",
-                  desc: "Unified UI architecture across 3 internal product teams, accelerating feature delivery by 20%.",
-                  type: "other",
-                },
-              ],
-            },
-            {
-              year: "Sept 2024",
-              title:
-                "Certification: Microsoft Certified: Azure Administrator Associate (AZ-104)",
-              company: "Microsoft Certification",
-              desc: "Achieved AZ-104 certification for managing cloud resources, storage, virtual networks, and CI/CD integrations.",
-              iconType: "certification",
-              imagePath: "/images/az-104.png",
-            },
-            {
-              year: "June 2020 – July 2024",
-              title: "B.Tech in Computer Science",
-              company: "APJ Abdul Kalam Technological University",
-              desc: "Graduated with honors in Computer Science from Kochi, India, securing a CGPA of 7.46/10.",
-              iconType: "education",
-              imagePath: "/images/ktu_logo.jpg",
-              subMilestones: [
-                {
-                  year: "April 2023 – June 2023",
-                  title: "Web Development Intern",
-                  company: "Acmegrade",
-                  desc: "Built responsive user interfaces using React. Implemented state management with Redux Toolkit. Developed backend systems using Node.js and MongoDB.",
-                  type: "internship",
-                },
-              ],
-            },
-          ],
-          projects: [],
-        };
+      : defaultPortfolioData;
 
   return (
     <main className="flex-1 p-6 md:p-12 max-w-5xl mx-auto w-full space-y-16">
       {/* Intro Section */}
       <section className="space-y-6 pt-4">
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white">
-          Hi! I&apos;m Samyukth Dharmarajan.
+          {defaultData.hero.title}
         </h1>
-        <p className="text-lg md:text-xl text-slate-300 max-w-2xl leading-relaxed">
-          24 year old associate software engineer passionate about Frontend
-          engineering from India.
+        <p className="text-lg md:text-xl text-slate-300 max-w-2xl leading-relaxed whitespace-pre-wrap">
+          {defaultData.hero.description}
         </p>
 
         {/* Links */}
