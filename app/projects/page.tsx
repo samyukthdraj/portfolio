@@ -23,7 +23,18 @@ const ProjectGrid = ({ projects }: { projects: typeof projectsData }) => (
                 className="object-cover"
               />
             ) : (
-              <div className="text-slate-600 font-bold text-2xl">{project.title}</div>
+              <div 
+                className="flex flex-col items-center justify-center text-center px-4 w-full h-full bg-slate-800/50 border-2 border-dashed border-slate-700/80 rounded-xl"
+                role="region"
+                aria-label={`Image placeholder for ${project.title}`}
+              >
+                <span className="text-white font-bold text-2xl tracking-wide drop-shadow-md">
+                  {project.title}
+                </span>
+                <span className="mt-3 text-slate-400 text-sm font-medium italic">
+                  Image omitted due to NDA
+                </span>
+              </div>
             )}
           </div>
 

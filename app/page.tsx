@@ -15,6 +15,7 @@ import {
   SiDocker,
   SiVercel,
   SiRender,
+  SiNestjs,
 } from "react-icons/si";
 import { VscAzure } from "react-icons/vsc";
 import { PortfolioTabs } from "@/components/portfolio-tabs";
@@ -135,6 +136,10 @@ export default async function DashboardPage() {
             <span className="font-medium text-slate-200">Node.js</span>
           </div>
           <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
+            <SiNestjs className="w-5 h-5 text-red-600" aria-hidden="true" />
+            <span className="font-medium text-slate-200">NestJS</span>
+          </div>
+          <div className="tech-btn flex items-center space-x-2 bg-slate-900/50 px-4 py-2.5 rounded-xl border border-slate-800 shadow-sm transition-transform hover:scale-105">
             <SiPython className="w-5 h-5 text-yellow-500" aria-hidden="true" />
             <span className="font-medium text-slate-200">Python</span>
           </div>
@@ -192,8 +197,17 @@ export default async function DashboardPage() {
                     className="object-cover"
                   />
                 ) : (
-                  <div className="text-slate-600 font-bold text-2xl">
-                    {project.title}
+                  <div 
+                    className="flex flex-col items-center justify-center text-center px-4 w-full h-full bg-slate-800/50 border-2 border-dashed border-slate-700/80 rounded-xl"
+                    role="region"
+                    aria-label={`Image placeholder for ${project.title}`}
+                  >
+                    <span className="text-white font-bold text-2xl tracking-wide drop-shadow-md">
+                      {project.title}
+                    </span>
+                    <span className="mt-3 text-slate-400 text-sm font-medium italic">
+                      Image omitted due to NDA
+                    </span>
                   </div>
                 )}
               </div>
