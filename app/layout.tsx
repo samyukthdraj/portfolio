@@ -27,9 +27,6 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Samyukth Dharmarajan" }],
   creator: "Samyukth Dharmarajan",
-  icons: {
-    icon: "/images/favicon_logo_rounded.png",
-  },
   verification: {
     google: "8FfBGIJWqEY9gsAxm1AJQmOUtRZISBv2Av_TP5Ocr2Y",
   },
